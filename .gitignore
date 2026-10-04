@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# Sample imagery is downloaded, not committed: run tools/fetch_samples.py
+samples/

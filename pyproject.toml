@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vibenitf"
+version = "0.1.0"
+description = "Read NITF imagery into numpy arrays, in pure Python"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+keywords = ["nitf", "nsif", "imagery", "remote-sensing", "numpy", "geospatial"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Topic :: Scientific/Engineering :: Image Processing",
+]
+dependencies = ["numpy>=1.20"]
+
+[project.optional-dependencies]
+# JPEG and JPEG 2000 segments are decoded by Pillow; the uncompressed path
+# needs nothing beyond numpy.
+jpeg = ["pillow>=9"]
+jp2 = ["pillow>=9"]
+all = ["pillow>=9"]
+test = ["pytest>=7", "pillow>=9"]
+
+[project.scripts]
+vibenitf = "vibenitf.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["error::SyntaxWarning"]
