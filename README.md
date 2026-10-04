@@ -126,6 +126,21 @@ fuzzing input.
 The samples are not redistributed here. Both sets are public test data; the
 JITC originals are available from NGA/JITC on request.
 
+## Looking at the output
+
+```sh
+python tools/gallery.py        # writes gallery/index.html
+```
+
+Decodes every segment in `samples/` into a browsable contact sheet: thumbnail,
+geometry, compression, interleave, and whether the segment matches its JITC
+reference exactly. Pixels the block or pad mask says were never written are
+tinted magenta, so masked imagery is distinguishable from merely dark imagery.
+
+Worth running after any change to the decoding path. A transposed block, a
+misread band interleave or an off-by-one palette is obvious in a thumbnail and
+invisible in a passing assertion.
+
 ## Notes on the format
 
 A few things in NITF reliably break readers, and are handled here

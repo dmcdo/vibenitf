@@ -16,7 +16,14 @@ python tools/fetch_samples.py gdal        # just one set; re-running only fetche
 
 python -m vibenitf info samples/jitc21/i_3301k.ntf --tres   # inspect structure
 python -m vibenitf export in.ntf out.npy --window 0,0,512,512
+
+python tools/gallery.py                   # gallery/index.html: every sample decoded
 ```
+
+Run `tools/gallery.py` after changing anything in the decoding path. A transposed
+block or a misread interleave is obvious as a thumbnail and invisible in a passing
+assertion; the page also labels which segments are pixel-exact against their
+reference.
 
 Pytest config lives in `pyproject.toml` under `[tool.pytest.ini_options]`. There is no
 linter or formatter configured; match the surrounding style instead (`%` formatting
